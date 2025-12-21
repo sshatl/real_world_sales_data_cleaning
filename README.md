@@ -64,8 +64,31 @@ The cleaning process follows a clear, step-by-step pipeline:
 
 ---
 
+## Feature Engineering
+
+A dedicated feature engineering stage was applied to enrich the cleaned sales data with structured, analytically meaningful attributes derived from unstructured product descriptions and transaction dates.
+
+### Hardware Feature Extraction
+- CPU information was parsed and normalized into high-level vendors (Intel, AMD, Apple), including support for abbreviated and legacy processor names.
+- RAM size was extracted using conservative, rule-based logic to minimize false positives from noisy listings.
+- Storage configuration was inferred based on SSD/HDD indicators, with hybrid setups explicitly identified.
+- GPU type was derived using lightweight keyword detection, distinguishing discrete graphics from integrated solutions.
+
+### Category Refinement
+- Products initially labeled as `other` were re-evaluated using hardware signals (CPU and RAM) to identify additional laptop entries.
+- This step reduced category ambiguity while avoiding aggressive or speculative reclassification.
+
+### Gaming Laptop Identification
+- GPU parsing and gaming classification were applied exclusively to laptop entries to prevent feature leakage across device types.
+- A binary `is_gaming_laptop` flag was introduced based on the presence of discrete GPUs (GTX, RTX, Radeon).
+
+### Temporal Features
+- Time-to-sale (`days_on_market`) was calculated as the difference between purchase and sale dates to capture product liquidity.
+- Sale month was extracted to support seasonality analysis.
+
+---
+
 ## Next Steps
 
-- Feature engineering from product descriptions  
 - Exploratory analysis and visualization  
 - Optional modeling or business insights
