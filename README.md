@@ -1,7 +1,7 @@
 
 # Real-World Sales Data Cleaning
 
-This project demonstrates an end-to-end data cleaning pipeline using real-world sales data from a small retail business.
+This project demonstrates an end-to-end data cleaning pipeline using real-world sales data from a small retail business specializing in refurbished (used) laptops.
 
 The dataset reflects manual data entry and batch-based extraction, resulting in structural issues, missing values, and mixed record types.  
 The goal of this project is to audit the data, apply transparent cleaning steps, and produce analysis-ready datasets.
@@ -14,8 +14,6 @@ The goal of this project is to audit the data, apply transparent cleaning steps,
 - Primary product category: laptops  
 - Additional records: accessories, refunds, miscellaneous operations  
 - Currency: UAH (with derived USD values)
-
-Raw data is not included in the repository due to privacy considerations.
 
 ---
 
@@ -88,7 +86,10 @@ A dedicated feature engineering stage was applied to enrich the cleaned sales da
 
 ---
 
-## Next Steps
+## Business Context
 
-- Exploratory analysis and visualization  
-- Optional modeling or business insights
+The dataset represents real-world sales data from a small retail business specializing in refurbished (used) laptops.  
+Products are acquired through buyback channels, refurbished, and resold via local marketplaces, resulting in heterogeneous product conditions, pricing, and sales dynamics.
+
+This context explains the presence of noisy descriptions, wide price dispersion, and long-tailed sales durations observed throughout the analysis.
+
