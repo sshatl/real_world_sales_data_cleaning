@@ -1,11 +1,9 @@
 
 # Real-World Sales Data Cleaning
 
-This project demonstrates an end-to-end data cleaning pipeline using real-world sales data from a small retail business specializing in refurbished (used) laptops.
-
-The dataset reflects manual data entry and batch-based extraction, resulting in structural issues, missing values, and mixed record types.  
-The goal of this project is to audit the data, apply transparent cleaning steps, and produce analysis-ready datasets.
-
+This case shows how messy real-world sales data was cleaned, normalized,
+and prepared for reliable analysis and reporting.
+ 
 ---
 
 ## Dataset Overview
@@ -17,9 +15,32 @@ The goal of this project is to audit the data, apply transparent cleaning steps,
 
 ---
 
+## The Problem
+
+The raw dataset contained multiple data quality issues typical for small
+retail businesses working with manual spreadsheets and batch exports:
+
+- Structural empty rows caused by batch-based data extraction
+- Mixed record types (sales, accessories, refunds) stored in a single table
+- Missing identifiers and dates in sales records
+- Dates stored as strings with inconsistent formats
+- Free-text product descriptions with inconsistent naming
+- Incomplete records not consistently populated
+
+### Raw Data Snapshot
+Unstructured CSV with unnamed columns, missing values, and mixed record types.
+
+![Raw data preview](screenshots/raw_data_sample.png)
+
+### Missing Values Audit
+Key fields were partially populated and required explicit handling.
+
+![Missing values](screenshots/missing_overall.png)
+![Missing values](screenshots/missing_by_columns.png)
+
 ## Data Cleaning Workflow
 
-The cleaning process follows a clear, step-by-step pipeline:
+The cleaning process follows a clear, step-by-step set of data preparation steps:
 
 1. **Initial data audit**  
    - Identification of structural empty rows  
@@ -49,7 +70,8 @@ The cleaning process follows a clear, step-by-step pipeline:
 
 ## Output Datasets
 
-- `sales_clean.csv` — cleaned laptop sales data, ready for analysis and feature engineering  
+- `sales_clean.csv` — cleaned laptop sales data, ready for analysis, reporting, or automation
+
 - `other_operations.csv` — non-sales operational records separated for independent analysis  
 
 ---
@@ -62,9 +84,16 @@ The cleaning process follows a clear, step-by-step pipeline:
 
 ---
 
-## Feature Engineering
+## Optional Data Enrichment (Within Data Preparation Scope)
 
-A dedicated feature engineering stage was applied to enrich the cleaned sales data with structured, analytically meaningful attributes derived from unstructured product descriptions and transaction dates.
+In addition to cleaning, selected unstructured fields were normalized
+into structured columns to make the dataset usable for analysis,
+reporting, and downstream automation.
+
+**Structured product attributes extracted from free-text descriptions**
+![Missing values](screenshots/feature_clean.png)
+**Final enriched schema after normalization**
+![Missing values](screenshots/clean_schema.png)
 
 ### Hardware Feature Extraction
 - CPU information was parsed and normalized into high-level vendors (Intel, AMD, Apple), including support for abbreviated and legacy processor names.
@@ -85,6 +114,14 @@ A dedicated feature engineering stage was applied to enrich the cleaned sales da
 - Sale month was extracted to support seasonality analysis.
 
 ---
+
+## Result
+
+- Clean and consistently structured sales dataset
+- Explicit handling of missing values without fabrication
+- Non-sales records separated for independent use
+- Dataset ready for reporting, analysis, or automation
+
 
 ## Business Context
 
